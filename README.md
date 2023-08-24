@@ -2,14 +2,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, we start the container with docker compose
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+cp .env.example .env #Copy the enviroment file
+
+docker compose up --build -d #Build the container
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
