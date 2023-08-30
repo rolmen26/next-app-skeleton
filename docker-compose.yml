@@ -1,12 +1,11 @@
 version: '3'
 
 services:
-  next-app:
-    build: 
-      context: .
-      dockerfile: Dockerfile
-    restart: always
+  app:
+    build: ./
+    restart: on-failure
     volumes:
-      - ./:/app
+      - ./:/usr/src/app
+      # - /usr/src/app/node_modules 
     ports:
       - "${APP_PORT}:3000"

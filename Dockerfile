@@ -1,13 +1,18 @@
 FROM node:alpine3.18
 
-LABEL manteiner="Rommel Soriano"
+ARG user=node
+ARG group=node
 
-RUN apk add --no-cache bash git zip unzip pkgconfig
+RUN apk add --no-cache bash git libc6-compat
 
-WORKDIR /app
+RUN mkdir -p /usr/src/cache
 
-COPY . .
+WORKDIR /usr/src/cache
+
+COPY --chown=${user}:${group} package*.json ./
 
 RUN npm install
 
-CMD ["npx", "next", "dev"]
+WORKDIR /usr/src/app
+
+ENTRYPOINT [ "/bin/sh", "/usr/src/app/entrypoint.sh" ]
