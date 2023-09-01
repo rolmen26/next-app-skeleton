@@ -5,7 +5,7 @@ ARG group=node
 
 RUN apk add --no-cache bash git libc6-compat
 
-RUN mkdir -p /usr/src/cache
+USER ${user}
 
 WORKDIR /usr/src/cache
 
